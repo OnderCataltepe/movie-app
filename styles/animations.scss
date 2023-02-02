@@ -1,0 +1,154 @@
+// Background
+
+@keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  @-webkit-keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  @-moz-keyframes move-background {    
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+    @-webkit-keyframes move-background {
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  @mixin animations($move, $second, $direction, $duration){
+   -moz-animation:$move $second $direction $duration;
+   -ms-animation:$move $second $direction $duration;
+   -o-animation:$move $second $direction $duration;
+   -webkit-animation:$move $second $direction $duration;
+   animation:$move $second $direction $duration;
+  }
+  .background-container{
+      position: fixed;
+      top: 0;
+      left:0;
+      bottom: 0;
+      right: 0;
+      
+      .clouds{
+        width:10000px;
+        height: 100%;
+        background: transparent url("../public/cloud.png") repeat;
+        background-size: 1000px 1000px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+        @include animations(move-background,150s ,linear ,infinite )
+      }
+      
+      .dayBg {
+         background-image: linear-gradient(to right, #2c52fd, #0068ff, #007bff, #008bfe, #309af9, #30a8f9, #41b4f6, #59c0f3, #61cef2, #73dbf1, #8ae7ee, #a3f2ed);
+        position: absolute;
+           top: 0;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           display: block;
+            z-index: 0;
+       }
+      .stars {
+        background: black url("../public/stars.png") repeat;
+        position: absolute;
+           top: 0;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           display: block;
+           z-index: 0;
+       }
+
+       .twinkling{
+        width:10000px;
+        height: 100%;
+        background: transparent url("../public/twinkling.png") repeat;
+        background-size: 1000px 1000px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 2;  
+        @include animations(move-background,50s ,linear ,infinite )
+
+    } 
+    img{
+      height: 70vh;
+      width:70vh;
+      position: absolute;
+      z-index: 3;
+      right: -100px;
+      opacity: 0.6;
+    } 
+  }
+  
+// Hamburger Menu
+ #hamburger {
+   display: none;
+ }
+ #hamburger +label{ 
+      cursor: pointer;
+      transition: 0.5s ease;
+      height: 40px;
+      &:hover >div {
+        box-shadow: 1px 1px 7px 1px RGBa(0, 0, 0, 0.3);
+      }
+      >div {
+        width: 22px;
+        height: 3px;
+        background: #fff;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        border-radius: 2px;
+        transition: 0.4s ease;
+        &:not(:first-child) {
+          margin-top: 4px;
+        }
+      }
+   
+ }
+ #hamburger:checked + label {
+   transform: translate(-50%,-50%) rotatey(180deg);
+   >div {
+     transform: rotatey(180deg) rotatex(360deg);
+     width: 26px;
+     &:first-child {
+       transform: rotate(-45deg);
+     }
+     &:nth-child(2) {
+       opacity: 0;
+     }
+     &:nth-child(3) {
+       margin-top: -10px;
+       transform: rotate(45deg);
+     }
+   }
+ }
+ 
+
+  
+
+  
