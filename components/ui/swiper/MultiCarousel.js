@@ -10,7 +10,8 @@ const MultiCarousel = ({ items }) => {
     <>
       <Swiper
         pagination={{
-          type: 'progressbar'
+          type: 'progressbar',
+          clickable: true
         }}
         style={{
           '--swiper-navigation-color': '#fff',

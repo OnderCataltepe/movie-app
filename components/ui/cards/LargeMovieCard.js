@@ -1,14 +1,18 @@
 import { BsCalendar3 } from 'react-icons/bs';
 import { AiFillStar } from 'react-icons/ai';
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 const LargeMovieCard = ({ item }) => {
   const router = useRouter();
 
   return (
-    <div className="relative cursor-pointer" onClick={() => router.push(`/movie/${item.id}`)}>
-      <img
-        className="h-auto w-full  "
+    <div
+      className="relative w-full cursor-pointer"
+      onClick={() => router.push(`/movie/${item.id}`)}>
+      <Image
+        width={1200}
+        height={900}
+        className="h-auto w-full"
         alt={item.title}
         src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
       />

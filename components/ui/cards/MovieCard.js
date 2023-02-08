@@ -5,28 +5,20 @@ import { useRouter } from 'next/router';
 import noImg from '../../../public/noImg.png';
 const MovieCard = ({ item, isSwiper = false }) => {
   const router = useRouter();
-
   const date = new Date(item.release_date);
   const year = date.getFullYear();
   return (
     <div
       className="group relative my-2 w-full cursor-pointer overflow-hidden "
       onClick={() => router.push(`/movie/${item.id}`)}>
-      {isSwiper ? (
-        <img
-          className="h-auto w-full duration-700 hover:scale-105"
-          alt={`${item.title}`}
-          src={item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : noImg}
-        />
-      ) : (
-        <Image
-          width={200}
-          height={300}
-          className="h-auto w-full duration-700 hover:scale-105"
-          alt={`${item.title}`}
-          src={item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : noImg}
-        />
-      )}
+      <Image
+        width={100}
+        height={150}
+        className="h-auto w-full duration-700 hover:scale-105"
+        alt={`${item.title}`}
+        src={item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : noImg}
+      />
+
       <div className="absolute bottom-0 hidden h-1/2 w-full flex-col justify-end bg-gradient-to-t from-black p-2 group-hover:flex">
         <p className="break-words text-sm font-bold text-white md:text-base">{item.title}</p>
         <div className="flex justify-between">

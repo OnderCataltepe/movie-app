@@ -10,15 +10,18 @@ const Carousel = ({ items }) => {
     <>
       <Swiper
         pagination={{
-          type: 'progressbar'
+          type: 'progressbar',
+          clickable: true
         }}
         style={{
           '--swiper-navigation-color': '#fff',
           '--swiper-pagination-color': '#fff'
         }}
+        className="MySwiper"
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false
+          pauseOnMouseEnter: false,
+          waitForTransition: false
         }}
         slidesPerView={1}
         navigation={true}
