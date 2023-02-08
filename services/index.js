@@ -31,60 +31,44 @@ export const getGenreMovies = async (genreId, page, sort) => {
 };
 
 export const getCredits = async (movieId) => {
-  try {
-    const response = await apiTmdb.get(`/movie/${movieId}/credits`, {
-      params: {
-        ...defaultParams
-      }
-    });
+  const response = await apiTmdb.get(`/movie/${movieId}/credits`, {
+    params: {
+      ...defaultParams
+    }
+  });
 
-    return response.data;
-  } catch (error) {
-    console.log('[getCredits] error => ', error);
-  }
+  return response.data;
 };
 
 export const getMovie = async (movieId) => {
-  try {
-    const response = await apiTmdb.get(`/movie/${movieId}`, {
-      params: {
-        ...defaultParams
-      }
-    });
+  const response = await apiTmdb.get(`/movie/${movieId}`, {
+    params: {
+      ...defaultParams
+    }
+  });
 
-    return response.data;
-  } catch (error) {
-    console.log('[getMovies] error => ', error);
-  }
+  return response.data;
 };
 
 export const getVideoList = async (movieId) => {
-  try {
-    const response = await apiTmdb.get(`/movie/${movieId}/videos`, {
-      params: {
-        ...defaultParams
-      }
-    });
+  const response = await apiTmdb.get(`/movie/${movieId}/videos`, {
+    params: {
+      ...defaultParams
+    }
+  });
 
-    return response.data;
-  } catch (error) {
-    console.log('[getVideList] error => ', error);
-  }
+  return response.data;
 };
 
 export const getSimilars = async (movieId, page) => {
-  try {
-    const response = await apiTmdb.get(`/movie/${movieId}/similar`, {
-      params: {
-        ...defaultParams,
-        page: page
-      }
-    });
+  const response = await apiTmdb.get(`/movie/${movieId}/similar`, {
+    params: {
+      ...defaultParams,
+      page: page
+    }
+  });
 
-    return response.data;
-  } catch (error) {
-    console.log('[getSimilars] error => ', error);
-  }
+  return response.data;
 };
 
 export const getPopular = async (page) => {

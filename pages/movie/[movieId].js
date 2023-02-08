@@ -52,19 +52,23 @@ const MoviePage = (props) => {
 export async function getStaticProps(context) {
   const { params } = context;
   const id = params.movieId;
-  const [movieData, creditData, similarData, videoData] = await Promise.all([
+  const [movieData, creditData, similarData, videoData] = await Promise.allSettled([
     getMovie(id),
     getCredits(id),
     getSimilars(id, '1'),
     getVideoList(id)
   ]);
-
+  if (movieData.status === 'rejected') {
+    return {
+      notFound: true
+    };
+  }
   return {
     props: {
-      movie: movieData,
-      credits: creditData,
-      similars: similarData.results,
-      videos: videoData
+      movie: movieData.value,
+      credits: creditData.value,
+      similars: similarData.value.results,
+      videos: videoData.value
     }
   };
 }
@@ -72,7 +76,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   return {
     paths: [{ params: { movieId: '1' } }, { params: { movieId: '2' } }],
-    fallback: 'blocking'
+    fallback: true
   };
 }
 export default MoviePage;
