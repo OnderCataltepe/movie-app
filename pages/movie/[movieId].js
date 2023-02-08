@@ -25,7 +25,7 @@ const MoviePage = (props) => {
   return (
     <>
       <Head>
-        <title>NUBI- {movie.title}</title>
+        <title>{`NUBI-${movie.title}`}</title>
         <meta name="description" content={`${movie.title} trailer, overview,cast...`} />
       </Head>
       <div className="flex flex-col items-center p-12">

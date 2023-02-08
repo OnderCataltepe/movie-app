@@ -9,7 +9,7 @@ const CategoryList = (props) => {
   return (
     <>
       <Head>
-        <title>NUBI- {title} movies</title>
+        <title>{`NUBI- ${title} movies`}</title>
         <meta name="description" content={`${title} movies`} />
       </Head>
 
