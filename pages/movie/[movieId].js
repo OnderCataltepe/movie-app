@@ -1,4 +1,4 @@
-import { getMovie, getCredits, getSimilars, getVideoList } from '../../services';
+import { getMovie, getCredits, getSimilars, getVideoList, getPopular } from '../../services';
 import MovieMedia from '../../components/movie/movieMedia/MovieMedia';
 import Cast from '../../components/movie/cast/Cast';
 import GenresList from '../../components/movie/genres/GenresList';
@@ -70,8 +70,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+  const res = await getPopular('1');
+  const pathArr = res.results.map((item) => ({ params: { movieId: item.id } }));
   return {
-    paths: [{ params: { movieId: '1' } }, { params: { movieId: '2' } }],
+    paths: pathArr,
     fallback: 'blocking'
   };
 }
