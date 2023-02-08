@@ -26,3 +26,4 @@ body:has(#hamburger:checked, .modalOpened){
     @apply backdrop-blur-sm shadow-sm bg-glass;
   }
 }
+

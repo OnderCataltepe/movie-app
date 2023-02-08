@@ -7,11 +7,12 @@ const Modal = ({ location, children, setOpenModal, open }) => {
     center: 'items-center',
     end: 'items-end'
   };
+
   return (
     <div
       className={`${
         open && 'modalOpened'
-      } fixed inset-0 z-40 mx-auto flex w-full overflow-y-auto overflow-x-hidden outline-none focus:outline-none ${
+      } fixed inset-0 z-50 mx-auto flex w-full overflow-y-auto overflow-x-hidden outline-none focus:outline-none ${
         modalAlign[location]
       } justify-center  bg-black bg-opacity-70 py-8`}>
       <div className="relative mx-auto w-3/4 p-1 md:w-2/4">

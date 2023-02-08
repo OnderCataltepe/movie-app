@@ -1,5 +1,6 @@
 import { MENU_DATA } from '../../../constants';
 import MenuItem from './MenuItem';
+
 const LargeMenu = () => {
   return (
     <>

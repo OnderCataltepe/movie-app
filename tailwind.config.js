@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        glass: { DEFAULT: 'rgba(200, 200, 200, 0.03)', hover: ' rgba(200, 200, 200, 0.2)' }
-      },
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
         amaticSc: ['Amatic SC', 'cursive'],

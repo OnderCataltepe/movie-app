@@ -19,7 +19,7 @@ const MobilMenu = () => {
         <div className="relative block overflow-y-visible">
           <div className="absolute top-[-27px] left-[-42px] h-screen w-screen animate-leftToRight flex-col overflow-y-auto bg-blueSky py-16 px-5 dark:bg-blackSky">
             {MENU_DATA.map((item, index) => (
-              <MobilMenuItem key={index} item={item} />
+              <MobilMenuItem setOpenMenu={setOpenMenu} key={index} item={item} />
             ))}
           </div>
         </div>

@@ -2,14 +2,20 @@ import { useState, useRef } from 'react';
 import IconButton from '../ui/buttons/IconButton';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Modal from '../ui/modals/Modal';
+import { useRouter } from 'next/router';
 const Searching = () => {
   const [openModal, setOpenModal] = useState(false);
   const searchRef = useRef(null);
+  const router = useRouter();
   const submitHandler = (e) => {
     e.preventDefault();
     if (searchRef.current.value.trim().length > 0) {
-      alert(searchRef.current.value);
+      router.push({
+        pathname: '/search',
+        query: { value: searchRef.current.value }
+      });
       searchRef.current.value = '';
+      setOpenModal(false);
     }
   };
   return (
