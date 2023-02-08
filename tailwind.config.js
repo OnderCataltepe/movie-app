@@ -37,5 +37,6 @@ module.exports = {
       }
     }
   },
+  staticPageGenerationTimeout: 1000,
   plugins: []
 };
