@@ -72,7 +72,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   return {
     paths: [{ params: { movieId: '1' } }, { params: { movieId: '2' } }],
-    fallback: true
+    fallback: 'blocking'
   };
 }
 export default MoviePage;
