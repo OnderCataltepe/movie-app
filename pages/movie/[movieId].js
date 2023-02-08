@@ -8,12 +8,10 @@ import CarouselContainer from '../../components/ui/swiper/CarouselContainer';
 import MultiCarousel from '../../components/ui/swiper/MultiCarousel';
 import Overview from '../../components/movie/overview/Overview';
 import Head from 'next/head';
+import { useEffect } from 'react';
 const MoviePage = (props) => {
   const { movie, credits, similars, videos } = props;
 
-  if (!movie) {
-    return <ErrorPage statusCode={404} />;
-  }
   const directors = credits.crew
     .filter((person) => person.job === 'Director')
     .map((item) => item.name);
@@ -40,11 +38,9 @@ const MoviePage = (props) => {
         <Cast directors={directors} cast={credits.cast} />
         <hr className="my-6 w-full dark:border-gray-400 " />
 
-        {similars.length > 0 && (
-          <CarouselContainer title="Similar Movies">
-            <MultiCarousel items={similars} />
-          </CarouselContainer>
-        )}
+        <CarouselContainer title="Similar Movies">
+          <MultiCarousel items={similars} />
+        </CarouselContainer>
       </div>
     </>
   );
@@ -52,31 +48,33 @@ const MoviePage = (props) => {
 export async function getStaticProps(context) {
   const { params } = context;
   const id = params.movieId;
-  const [movieData, creditData, similarData, videoData] = await Promise.allSettled([
-    getMovie(id),
-    getCredits(id),
-    getSimilars(id, '1'),
-    getVideoList(id)
-  ]);
-  if (movieData.status === 'rejected') {
+  try {
+    const [movieData, creditData, similarData, videoData] = await Promise.all([
+      getMovie(id),
+      getCredits(id),
+      getSimilars(id, '1'),
+      getVideoList(id)
+    ]);
+
+    return {
+      props: {
+        movie: movieData,
+        credits: creditData,
+        similars: similarData.results,
+        videos: videoData
+      }
+    };
+  } catch {
     return {
       notFound: true
     };
   }
-  return {
-    props: {
-      movie: movieData.value,
-      credits: creditData.value,
-      similars: similarData.value.results,
-      videos: videoData.value
-    }
-  };
 }
 
 export async function getStaticPaths() {
   return {
     paths: [{ params: { movieId: '1' } }, { params: { movieId: '2' } }],
-    fallback: true
+    fallback: 'blocking'
   };
 }
 export default MoviePage;

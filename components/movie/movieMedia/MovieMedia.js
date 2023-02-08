@@ -17,7 +17,7 @@ const MovieMedia = ({ item, videoData }) => {
     <div className="relative w-full">
       <Image
         priority
-        width={1200}
+        width={1600}
         height={900}
         className="h-auto w-full  "
         alt={item.title}
