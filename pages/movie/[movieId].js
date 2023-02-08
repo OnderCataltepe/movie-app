@@ -71,7 +71,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const res = await getPopular('1');
-  const pathArr = res.results.map((item) => ({ params: { movieId: item.id } }));
+  const pathArr = res.results.map((item) => ({ params: { movieId: item.toString() } }));
   return {
     paths: pathArr,
     fallback: 'blocking'
