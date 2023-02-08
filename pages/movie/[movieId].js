@@ -1,6 +1,4 @@
 import { getMovie, getCredits, getSimilars, getVideoList } from '../../services';
-import ErrorPage from 'next/error';
-
 import MovieMedia from '../../components/movie/movieMedia/MovieMedia';
 import Cast from '../../components/movie/cast/Cast';
 import GenresList from '../../components/movie/genres/GenresList';
@@ -8,7 +6,7 @@ import CarouselContainer from '../../components/ui/swiper/CarouselContainer';
 import MultiCarousel from '../../components/ui/swiper/MultiCarousel';
 import Overview from '../../components/movie/overview/Overview';
 import Head from 'next/head';
-import { useEffect } from 'react';
+
 const MoviePage = (props) => {
   const { movie, credits, similars, videos } = props;
 

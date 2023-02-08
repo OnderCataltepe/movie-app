@@ -2,9 +2,8 @@ import Head from 'next/head';
 import MultiCarousel from '../components/ui/swiper/MultiCarousel';
 import Carousel from '../components/ui/swiper/Carousel';
 import { getNowPlaying, getTopRated, getUpcoming } from '../services';
-import dynamic from 'next/dynamic';
-
 import CarouselContainer from '../components/ui/swiper/CarouselContainer';
+
 export default function Home(props) {
   const { nowPlayings, upComings, topRated } = props;
 
