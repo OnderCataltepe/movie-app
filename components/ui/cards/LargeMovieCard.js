@@ -7,11 +7,11 @@ const LargeMovieCard = ({ item }) => {
 
   return (
     <div
-      className="relative w-full cursor-pointer"
+      className="relative w-full cursor-pointer overflow-hidden"
       onClick={() => router.push(`/movie/${item.id}`)}>
       <Image
-        width={1200}
-        height={900}
+        width={800}
+        height={450}
         className="h-auto w-full"
         alt={item.title}
         src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
